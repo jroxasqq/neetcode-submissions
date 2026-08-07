@@ -1,0 +1,23 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+from copy import deepcopy
+class Solution:
+    def cloneGraph(self, node: Optional['Node'], visited: set[tuple[int, int]]=set()) -> Optional['Node']:
+        if not node:
+            return
+
+        newNode = deepcopy(node)
+
+        visited.add(newNode.val)
+        for idx, neighbor in enumerate(newNode.neighbors):
+            if neighbor.val not in visited:
+                newNode.neighbors[idx] = self.cloneGraph(neighbor, visited)
+
+        print(f"{newNode.val} has neighbors {[n.val for n in newNode.neighbors]}")
+
+        return newNode
