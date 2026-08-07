@@ -1,0 +1,51 @@
+from typing import List
+
+
+def sort_words(words: List[str]) -> List[str]:
+    result = words.copy()
+
+    # sort using bubble sort algorithm.
+    n = len(result)
+    for i in range(0, n):
+        # considering that each traversal of the list the i-th
+        # smallest element is "pushed" to the end of the list, we can
+        # just iterate to the n - i elements. Also to prevent
+        # out-of-bound indexing error (with result[j + 1]), we also - 1.
+        for j in range(0, n - i - 1):
+            if result[j] < result[j + 1]:
+                result[j], result[j + 1] = result[j + 1], result[j]
+
+    return result
+
+def sort_numbers(numbers: List[int]) -> List[int]:
+    result = numbers.copy()
+
+    # sort using bubble sort algorithm.
+    n = len(result)
+    for i in range(0, n):
+        for j in range(0, n - i - 1):
+            if result[j] < result[j + 1]:
+                result[j], result[j + 1] = result[j + 1], result[j]
+
+    return result
+
+def sort_decimals(numbers: List[float]) -> List[float]:
+    result = numbers.copy()
+
+    # sort using bubble sort algorithm.
+    n = len(result)
+    for i in range(0, n):
+        for j in range(0, n - i - 1):
+            if result[j] < result[j + 1]:
+                result[j], result[j + 1] = result[j + 1], result[j]
+
+    return result
+
+
+
+# do not modify below this line
+print(sort_words(["cherry", "apple", "blueberry", "banana", "watermelon", "zucchini", "kiwi", "pear"]))
+
+print(sort_numbers([1, 5, 3, 2, 4, 11, 19, 9, 2, 5, 6, 7, 4, 2, 6]))
+
+print(sort_decimals([3.14, 2.82, 6.433, 7.9, 21.555, 21.554]))
